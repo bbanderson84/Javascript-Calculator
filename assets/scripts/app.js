@@ -1,5 +1,4 @@
 const defaultResult = 0;
-
 let currentResult = defaultResult;
 
 function getUserNumInput() {
@@ -8,6 +7,7 @@ function getUserNumInput() {
 
 function createAndWriteOutput(operator, resultBeforeCalc, calcNum) {
     const calcDescription = `${resultBeforeCalc} ${operator} ${calcNum}`;
+    outputResult(currentResult, calcDescription);
 
 }
 
@@ -19,18 +19,12 @@ function addNumbers() {
     createAndWriteOutput('+', initResult, enteredNum);
 }
 
-// event that runs addNumbers function on button click
-addBtn.addEventListener('click', addNumbers);
-
 function subNumbers () {
     const enteredNum = getUserNumInput();
     const initResult = currentResult;
     currentResult = currentResult - enteredNum;
     createAndWriteOutput('-', initResult, enteredNum);
-
 }
-
-subtractBtn.addEventListener('click',subNumbers);
 
 function divNumbers() {
     const enteredNum = getUserNumInput();
@@ -40,7 +34,6 @@ function divNumbers() {
 
 }
 
-divideBtn.addEventListener('click', divNumbers);
 
 function multNumbers() {
     const enteredNum = getUserNumInput();
@@ -49,5 +42,11 @@ function multNumbers() {
     createAndWriteOutput('*', initResult, enteredNum);
 }
 
+
+addBtn.addEventListener('click', addNumbers);
+subtractBtn.addEventListener('click',subNumbers);
+divideBtn.addEventListener('click', divNumbers);
 multiplyBtn.addEventListener('click', multNumbers);
+
+
 
