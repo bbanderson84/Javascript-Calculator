@@ -7,6 +7,27 @@ function getUserNumInput() {
     return parseInt(usrInput.value);
 }
 
+function calcResult (calcType) {
+    const enteredNum = getUserNumInput();
+    const initResult = currentResult;
+    let mathOp;
+    if (calcType === 'ADD') {
+        currentResult += enteredNum;
+        mathOp = '+';
+    } else if (calcType === 'SUB') {
+        currentResult -= enteredNum;
+        mathOp = '-';
+    } else if (calcType === 'MUL') {
+        currentResult *= enteredNum;
+        mathOp = '*';
+    } else if (calcType === 'DIV') {
+        currentResult /= enteredNum;
+        mathOp = '/';
+    }
+    createAndWriteOutput(mathOp, initResult, enteredNum);
+    writeToLog(calcType, initResult, enteredNum, currentResult);
+}
+
 
 //generates and writes calc log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNum) {
@@ -28,40 +49,26 @@ function writeToLog(opIdentifer, prvResult, opNumber, newResult) {
 
 // function that takes numbers and adds them
 function addNumbers() {
-    const enteredNum = getUserNumInput();
-    const initResult = currentResult;
-    currentResult += enteredNum;
-    createAndWriteOutput('+', initResult, enteredNum);
-    writeToLog('ADD', initResult, enteredNum, currentResult);
+   calcResult('ADD');
 }
 
 // function that takes numbers and subs them
 function subNumbers () {
-    const enteredNum = getUserNumInput();
-    const initResult = currentResult;
-    currentResult -= enteredNum;
-    createAndWriteOutput('-', initResult, enteredNum);
-    writeToLog('SUB', initResult, enteredNum, currentResult);
-}
-
-// function that takes numbers and divides them
-function divNumbers() {
-    const enteredNum = getUserNumInput();
-    const initResult = currentResult;
-    currentResult /= enteredNum;
-    createAndWriteOutput('/', initResult, enteredNum);
-    writeToLog('DIV', initResult, enteredNum, currentResult);
+   calcResult('SUB');
 }
 
 // function that takes numbers and multiplies them
 function multNumbers() {
-    const enteredNum = getUserNumInput();
-    const initResult = currentResult;
-    currentResult *= enteredNum;
-    createAndWriteOutput('*', initResult, enteredNum);
-    writeToLog('MULT', initResult, enteredNum, currentResult);
-
+    calcResult('MUL');
+    
 }
+
+// function that takes numbers and divides them
+function divNumbers() {
+    calcResult('DIV');
+}
+
+
 
 //event listeners for operator buttons on click
 addBtn.addEventListener('click', addNumbers);
