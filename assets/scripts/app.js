@@ -7,6 +7,7 @@ function getUserNumInput() {
     return parseInt(usrInput.value);
 }
 
+
 //generates and writes calc log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNum) {
     const calcDescription = `${resultBeforeCalc} ${operator} ${calcNum}`;
