@@ -9,6 +9,14 @@ function getUserNumInput() {
 
 function calcResult (calcType) {
     const enteredNum = getUserNumInput();
+    if (calcType !== 'ADD' && 
+        calcType !== 'SUB' && 
+        calcType !== 'MUL' && 
+        calcType !== 'DIV' || 
+        !enteredNum
+        ) {
+        return ;
+    }
     const initResult = currentResult;
     let mathOp;
     if (calcType === 'ADD') {
@@ -24,9 +32,13 @@ function calcResult (calcType) {
         currentResult /= enteredNum;
         mathOp = '/';
     }
+
     createAndWriteOutput(mathOp, initResult, enteredNum);
     writeToLog(calcType, initResult, enteredNum, currentResult);
-}
+
+    }
+
+
 
 
 //generates and writes calc log
